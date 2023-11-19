@@ -1,0 +1,27 @@
+﻿@using BlazorApp1.Models
+@page "/counter"
+
+<h1>Counter</h1>
+
+<p role="status">Current count: @(this.Model.CurrentCount)</p>
+<EditForm Enhance FormName="counter-form" Model="this.Model" OnValidSubmit="IncrementCount">
+    <input type="hidden" name="@(nameof(Model)).@(nameof(CounterModel.CurrentCount))" value="@(this.Model.CurrentCount)" />
+
+    <div class="row mb-4">
+        <div class="col-2">
+            <InputDate @bind-Value="this.Model.Date" class="form-control" />
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col">
+            <ValidationSummary />
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col">
+            <button class="btn btn-primary" type="submit">Click me</button>
+        </div>
+    </div>
+</EditForm>
